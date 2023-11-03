@@ -30,8 +30,7 @@
     "build": "npm-run-all -p build:*",
     "build:esm": "esbuild --sourcemap --format=esm --target=es2019 --outdir=dist/esm `./scripts/files.sh`",
     "build:cjs": "esbuild --sourcemap --format=cjs --target=es2017 --outdir=dist/cjs `./scripts/files.sh`",
-    "build:types": "tsc -p .",
-    "prepare": "husky install"
+    "build:types": "tsc -p ."
   },
   "lint-staged": {
     "*.{ts,tsx,js,json}": [
