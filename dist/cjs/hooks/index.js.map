@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/hooks/index.ts"],
+  "sourcesContent": ["export * from './useDynamicImport';\n"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;AAAA,0BAAc,+BAAd;",
+  "names": []
+}
