@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/hooks/useDynamicImport.ts"],
+  "sourcesContent": ["import { useEffect, useState } from 'react';\nimport { Props } from 'react-docgen-typescript';\n\nexport const useDynamicImport = (name: string): Props => {\n  const [props, setProps] = useState<Props>(null);\n\n  useEffect(() => {\n    let resolved = false;\n\n    import(`@docgen/${name}.json`)\n      .then(props => {\n        if (!resolved) {\n          resolved = true;\n          setProps(props.default);\n        }\n      })\n      .catch(console.error);\n\n    return () => {\n      resolved = true;\n    };\n  }, [name]);\n\n  return props;\n};\n"],
+  "mappings": "AAAA,SAAS,WAAW,gBAAgB;AAG7B,MAAM,mBAAmB,CAAC,SAAwB;AACvD,QAAM,CAAC,OAAO,QAAQ,IAAI,SAAgB,IAAI;AAE9C,YAAU,MAAM;AACd,QAAI,WAAW;AAEf,WAAO,WAAW,aACf,KAAK,CAAAA,WAAS;AACb,UAAI,CAAC,UAAU;AACb,mBAAW;AACX,iBAASA,OAAM,OAAO;AAAA,MACxB;AAAA,IACF,CAAC,EACA,MAAM,QAAQ,KAAK;AAEtB,WAAO,MAAM;AACX,iBAAW;AAAA,IACb;AAAA,EACF,GAAG,CAAC,IAAI,CAAC;AAET,SAAO;AACT;",
+  "names": ["props"]
+}
