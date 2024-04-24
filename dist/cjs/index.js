@@ -60,7 +60,14 @@ const getParser = (config, options, parserOptions) => {
   }
   return (0, import_react_docgen_typescript.withDefaultConfig)(parserOptions).parse;
 };
-function plugin(context, { src, global = false, route, tsConfig, compilerOptions, parserOptions }) {
+function plugin(context, {
+  src,
+  global = false,
+  route,
+  tsConfig,
+  compilerOptions,
+  parserOptions
+}) {
   return {
     name: "docusaurus-plugin-react-docgen-typescript",
     async loadContent() {
@@ -103,19 +110,23 @@ function plugin(context, { src, global = false, route, tsConfig, compilerOptions
       } else {
         const processed = {};
         content.map((component) => {
-          let fileName = component.displayName;
-          if (component.displayName in processed) {
+          const componentName = component.displayName;
+          let fileName = componentName;
+          if (componentName in processed) {
             console.warn(
-              `Duplicate component '${component.displayName}' found (existing: ${processed[fileName][0]})`
+              `Duplicate component '${componentName}' found (existing:
+                ${processed[componentName][processed[componentName].length - 1]})`
             );
-            fileName += `${processed[fileName].length}`;
-            console.warn(`'${component.filePath}' will be written to '${fileName}.json'`);
+            fileName += `${processed[componentName].length}`;
+            console.warn(
+              `'${component.filePath}' will be written to '${fileName}.json'`
+            );
           }
           createData(`${fileName}.json`, JSON.stringify(component.props));
-          if (!(fileName in processed)) {
-            processed[fileName] = [];
+          if (!(componentName in processed)) {
+            processed[componentName] = [];
           }
-          processed[fileName].push(component.filePath);
+          processed[componentName].push(component.filePath);
         });
       }
     }

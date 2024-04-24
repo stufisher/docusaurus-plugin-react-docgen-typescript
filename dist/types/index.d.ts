@@ -1,7 +1,7 @@
-import { ParserOptions, ComponentDoc } from 'react-docgen-typescript';
-import { Plugin, DocusaurusContext, RouteConfig } from '@docusaurus/types';
-import { CompilerOptions } from 'typescript';
-type Route = Pick<RouteConfig, 'exact' | 'component' | 'path' | 'priority'>;
+import type { ParserOptions, ComponentDoc } from "react-docgen-typescript";
+import type { Plugin, DocusaurusContext, RouteConfig } from "@docusaurus/types";
+import type { CompilerOptions } from "typescript";
+type Route = Pick<RouteConfig, "exact" | "component" | "path" | "priority">;
 type Union = {
     global?: undefined | false;
     route: Route;
@@ -16,6 +16,6 @@ export type Options = Union & {
     parserOptions?: ParserOptions;
     globOptions: null;
 };
-export default function plugin(context: DocusaurusContext, { src, global, route, tsConfig, compilerOptions, parserOptions }: Options): Plugin<ComponentDoc[]>;
+export default function plugin(context: DocusaurusContext, { src, global, route, tsConfig, compilerOptions, parserOptions, }: Options): Plugin<ComponentDoc[]>;
 export {};
 //# sourceMappingURL=index.d.ts.map
